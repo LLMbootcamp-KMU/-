@@ -3,8 +3,8 @@ import json
 import requests
 
 # Streamlit 애플리케이션 제목 설정
-st.set_page_config(page_title="사용자 정보 입력", layout="centered")
-st.title("사용자 정보 입력")
+st.set_page_config(page_title="요구사항 입력", layout="centered")
+st.title("요구사항 입력")
 
 # CSS 스타일 적용
 st.markdown(
@@ -18,7 +18,7 @@ st.markdown(
     .stTextInput, .stNumberInput, .stTextArea, .stCheckbox {
         background-color: #ffffff;  /* 극히 연한 베이지 색 */
         border: 1px solid #ddd;
-        border-radius: 10px;
+        border-radius: 12px;
         padding: 10px;
         margin-bottom: 10px;
     }
@@ -26,7 +26,7 @@ st.markdown(
         background-color: #4CAF50;
         color: white;
         border: none;
-        border-radius: 10px;
+        border-radius: 12px;
         padding: 10px 24px;
         text-align: center;
         text-decoration: none;
@@ -38,7 +38,7 @@ st.markdown(
     .stJson {
         background-color: #faf5e6;  /* 더욱 연한 베이지 색 */
         padding: 10px;
-        border-radius: 10px;
+        border-radius: 12px;
     }
     </style>
     """,
@@ -81,15 +81,15 @@ data = {
 # 위치 데이터만 JSON 형식으로 저장
 data2 = json.dumps({"위치": location}, ensure_ascii=False)
 
-# JSON 형식으로 출력
-st.subheader("입력한 정보 (JSON 형식):")
-st.json(data)
+# # JSON 형식으로 출력
+# st.subheader("입력한 정보 (JSON 형식):")
+# st.json(data)
 
-st.subheader("위치 정보 (JSON 형식):")
-st.json(json.loads(data2))
+# st.subheader("위치 정보 (JSON 형식):")
+# st.json(json.loads(data2))
 
 # Flask 서버로 데이터 전송
-if st.button("데이터 전송"):
+if st.button("Enter"):
     response = requests.post(
         "http://127.0.0.1:5000/search_accommodation", json=json.loads(data2)
     )
